@@ -1,0 +1,49 @@
+[build-system]
+requires = [
+    "setuptools>=61.0", # Using a reasonably modern setuptools
+    "wheel",
+    "Cython>=0.29",     # Or your preferred Cython version
+]
+build-backend = "setuptools.build_meta"
+# backend-path = ["."] # Usually not needed if setup.py is in the root
+
+[project]
+name = "py3sbf"                                                                   # <<< IMPORTANT: Change this to your actual project name
+version = "0.1.0"                                                                 # <<< Update version as you release new changes
+description = "A package containing the pysbf Cython library and py3sbf scripts."
+readme = "README.md"                                                              # Optional: create a README.md file for your project
+requires-python = ">=3.11"                                                        # Specify your minimum supported Python version
+
+# Add any runtime dependencies your project needs.
+# For example, if your Cython code or scripts use numpy:
+dependencies = [
+    "argcomplete==3.6.2",
+    "Cython==3.1.2",
+    "markdown-it-py==3.0.0",
+    "mdurl==0.1.2",
+    "Pygments==2.19.1",
+    # "pysbf==0.0.1",
+    "rich==14.0.0",
+    "setuptools==80.9.0",
+    "numpy==2.3.0",
+]
+
+# This section makes your scripts accessible from the command line.
+# After installation, you can run "sbf_blocknames".
+[project.scripts]
+sbf_blocknames = "py3sbf.sbf_blocknames:main"
+sbf_azel = "py3sbf.sbf_azel:main"
+
+
+# This tells setuptools where to find your Python packages (like 'py3sbf').
+[tool.setuptools.packages.find]
+where = ["src"] # Look for packages in the 'src' directory
+include = [
+    "py3sbf*",
+] # Include 'py3sbf' and any sub-packages (e.g., py3sbf.utils)
+# exclude = [] # Optional: patterns to exclude if needed
+
+# If your 'pysbf' package also contains non-Python data files that need to be included
+# (e.g., .pxd files if they are not automatically handled during compilation but needed for distribution)
+# [tool.setuptools.package-data]
+# "pysbf" = ["*.pxd"]
