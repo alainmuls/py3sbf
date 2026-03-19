@@ -57,5 +57,6 @@ ext-modules = [
 
 [tool.setuptools.package-data]
 # Ensure the compiled extension and source are included in the distribution
-"*" = ["*.so", "*.pyx", "*.pyd"]
+# "*" = ["*.so", "*.pyx", "*.pyd"]
+"*" = ["*.so"]
 
