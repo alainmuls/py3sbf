@@ -51,7 +51,8 @@ include = [
 [tool.setuptools]
 # This defines the Cython extension module
 ext-modules = [
-    { name = "py3sbf.pysbf.sbf", sources = ["src/py3sbf/pysbf/sbf.pyx", "src/py3sbf/pysbf/c_crc.c"] }
+    { name = "py3sbf.pysbf.sbf", sources = ["src/py3sbf/pysbf/sbf.pyx", "src/py3sbf/pysbf/c_crc.c"] },
+    { name = "py3sbf.pysbf.parsers", sources = ["src/py3sbf/pysbf/parsers.pyx"] }
 ]
 
 [tool.setuptools.package-data]
