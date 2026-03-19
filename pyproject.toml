@@ -1,8 +1,8 @@
 [build-system]
 requires = [
-    "setuptools>=61.0", # Using a reasonably modern setuptools
+    "setuptools>=74.1", # Using a reasonably modern setuptools
     "wheel",
-    "Cython>=0.29",     # Or your preferred Cython version
+    "Cython>=3.0",     # Or your preferred Cython version
 ]
 build-backend = "setuptools.build_meta"
 # backend-path = ["."] # Usually not needed if setup.py is in the root
@@ -47,3 +47,14 @@ include = [
 # (e.g., .pxd files if they are not automatically handled during compilation but needed for distribution)
 # [tool.setuptools.package-data]
 # "pysbf" = ["*.pxd"]
+
+[tool.setuptools]
+# This defines the Cython extension module
+ext-modules = [
+    { name = "py3sbf.pysbf.sbf", sources = ["src/py3sbf/pysbf/sbf.pyx", "src/py3sbf/pysbf/c_crc.c"] }
+]
+
+[tool.setuptools.package-data]
+# Ensure the compiled extension and source are included in the distribution
+"*" = ["*.so", "*.pyx", "*.pyd"]
+
